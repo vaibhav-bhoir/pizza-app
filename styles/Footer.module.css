@@ -1,0 +1,77 @@
+.container {
+  background-color: #000;
+  display: flex;
+}
+
+.item {
+  flex: 1;
+  position: relative;
+  display: flex;
+  padding: 50px;
+  flex-wrap: wrap;
+
+}
+
+.card {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 18px;
+  color: #b7903c;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  padding: 8px 0;
+  margin: 0;
+  color: #fff;
+}
+
+.text {
+  color: lightgray;
+}
+
+.motto {
+  color: rgb(211, 211, 211);
+}
+
+
+@media screen and (max-width: 991px) {
+  .card {
+    flex: 50%;
+    flex-wrap: wrap;
+  }
+  
+}
+
+
+@media screen and (max-width: 576px) {
+  .container {
+    height: auto;
+    text-align: center;
+  }
+
+  .card {
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .text {
+    font-size: 18px;
+  }
+}
