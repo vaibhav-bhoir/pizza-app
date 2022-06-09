@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import getConfig from 'next/config';
 import styles from "../styles/Add.module.css";
 import axios from "axios";
-import { useRouter } from "next/router";
 import useOnClickOutside from "./useOnClickOutside";
 
 const {publicRuntimeConfig} = getConfig()
@@ -53,6 +52,7 @@ const Add = ({ setClose }) => {
 
             await axios.post(`${BASE_URL}/api/products`, newProduct);
             setClose(true);
+            window.location.reload()
         } catch (err) {
             console.log(err);
         }

@@ -4,7 +4,7 @@ import styles from "../styles/PizzaCard.module.css";
 
 const PizzaCard = ({ pizza }) => {
     return (
-        <div className={styles.container}>
+        <div className={styles.container} id={PizzaCard}>
             <Link href={`/product/${pizza._id}`} passHref>
                 <Image src={pizza.img} alt="" width="350" height="350" />
             </Link>

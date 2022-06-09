@@ -9,7 +9,7 @@ import "swiper/css/scrollbar";
 import styles from "../styles/Featured.module.css";
 
 const FeaturedNew = () => {
-    const images = ["/img/banner6.jpg","/img/banner5.jpg", "/img/banner8.jpg"];
+    const images = ["/img/banner6.jpg","/img/banner5.jpg", "/img/banner8.jpg",];
 
 
     return (

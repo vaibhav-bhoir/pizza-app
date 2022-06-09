@@ -1,42 +1,32 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from "../styles/Add.module.css";
 import useOnClickOutside from './useOnClickOutside';
 
 
-const Edit = ({products, setEdit}) => {
+const Edit = ({setEdit, pizza, setPizza, onFormSubmit}) => {
 
     // clickOutside custom hook call 
     const domeNode = useRef();
     useOnClickOutside(domeNode, () => setEdit(false))
 
-    const prizeValue = products[0].prices
-    const extraOptionText = products[0].extraOptions
-    console.log(extraOptionText)
-
-    const [title, setTitle] = useState(products[0].title);
-    const [desc, setDesc] = useState(products[0].desc);
-    const [prices, setPrices] = useState(prizeValue);
-    // const [extraOptions, setExtraOptions] = useState([]);
-    // const [extra, setExtra] = useState(null);
-
-
-
-    // const {title, desc, img, } = pizzaList[0]
-    console.log(products[0])
-
-
-   
-
+    function onTextFieldChange(e) {
+      setPizza({
+        ...pizza,
+        [e.target.name]: e.target.value
+      })
+    }
+ 
     return (
         <div className={styles.container}>
           <div className={styles.wrapper} ref={domeNode} >
             <span  className={styles.close} onClick = {() => setEdit(false)}>
               X
             </span>
-            <h1>Add a new Pizza</h1>
+            <h1>Update an existing Pizza</h1>
             <div className={styles.item}>
-              <label className={styles.label}>Choose an image</label>
+              <label className={styles.label}>Choose new image</label>
               <input type="file"/>
+             
               
             </div>
             <div className={styles.item}>
@@ -44,8 +34,9 @@ const Edit = ({products, setEdit}) => {
               <input
                 className={styles.input}
                 type="text"
-                value={title}
-                onChange= {(e) => setTitle(e.target.value)}
+                name='title'
+                value={pizza.title}
+                onChange={e => onTextFieldChange(e)}
                
               />
             </div>
@@ -54,8 +45,9 @@ const Edit = ({products, setEdit}) => {
               <textarea
                 rows={4}
                 type="text"
-                value={desc}
-                onChange= {(e) => setDesc(e.target.value)}
+                name='desc'
+                value={pizza.desc}
+                onChange={e => onTextFieldChange(e)}
                 
               />
             </div>
@@ -66,24 +58,24 @@ const Edit = ({products, setEdit}) => {
                   className={`${styles.input} ${styles.inputSm}`}
                   type="number"
                   placeholder="Small"
-                  value={prices[0]}
-                  onChange= {(e) => setPrices(e.target.value)}
-                 
+                  value={pizza.prices[0]} 
+                  onChange={e => onTextFieldChange(e, 1)}
                 />
                 <input
                   className={`${styles.input} ${styles.inputSm}`}
                   type="number"
                   placeholder="Medium"
-                  value={prices[1]}
-                  onChange= {(e) => setPrices(e.target.value)}
+                  value={pizza.prices[1]} 
+                  onChange={e => onTextFieldChange(e, 1)}
                  
                 />
                 <input
                   className={`${styles.input} ${styles.inputSm}`}
                   type="number"
                   placeholder="Large"
-                  value={prices[2]}
-                  onChange= {(e) => setPrices(e.target.value)}
+                  value={pizza.prices[2]} 
+                  onChange={e => onTextFieldChange(e, 2)}
+                 
                  
                 />
               </div>
@@ -109,12 +101,25 @@ const Edit = ({products, setEdit}) => {
               </div>
               
             </div>
-            <button className={styles.addButton} >
+            <button className={styles.addButton} onClick={onFormSubmit}>
               Update
             </button>
           </div>
         </div>
       );
 }
+
+
+// export const getServerSideProps = async ({params}) => {
+  
+
+//   const productRes = await axios.get(`${BASE_URL}/api/products/${params.id}`);
+
+//   return {
+//       props: {
+//           singleProduct: productRes.data,
+//       },
+//   };
+// };
 
 export default Edit
