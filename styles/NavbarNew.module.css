@@ -1,0 +1,219 @@
+.container {
+  height: 75px;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  z-index: 999;
+}
+
+.nav{
+  /* height: 6rem; */
+  width: 100vw;
+  background-color:#fc8019;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  position: fixed;
+  z-index: 10;
+}
+
+/*Styling logo*/
+.logo{
+  padding:1vh 1vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+/*Styling Links*/
+.navLinks{
+  margin: 0;
+  display: flex;
+  list-style: none; 
+  width: 88vw;
+  padding: 0 0.7vw;
+  justify-content: space-evenly;
+  align-items: center;
+  text-transform: uppercase;
+}
+.navLinks li a{
+  text-decoration: none;
+  margin: 0 0.7vw;
+  color: white;
+}
+.navLinks li a:hover, .navLinks li a.active {
+  color: #fff
+}
+.navLinks li {
+  position: relative;
+}
+.navLinks li a::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0%;
+  background-color: #fff;
+  position: absolute;
+  transition: all ease-in-out 250ms;
+  margin: 0 0 0 10%;
+}
+.navLinks li:not(:last-child) a:hover::before{
+  width: 80%;
+}
+
+.navLinks li a.active::before{
+  width: 80%;
+  color: white;
+}
+
+/*Styling Buttons*/
+.loginButton{
+  color: white;
+  background-color: transparent;
+  border: 1.5px solid #f2f5f7;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  /* margin-left: 2vw; */
+  font-size: 1rem;
+  cursor: pointer;
+
+}
+.loginButton:hover {
+  color: #131418;
+  background-color: #f2f5f7;
+  border:1.5px solid #f2f5f7;
+  transition: all ease-in-out 350ms;
+}
+.joinButton{
+  color: #131418;
+  background-color: #61DAFB;
+  border: 1.5px solid #61DAFB;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.joinButton:hover {
+  color: #f2f5f7;
+  background-color: transparent;
+  border:1.5px solid #f2f5f7;
+  transition: all ease-in-out 350ms;
+}
+
+/*Styling Hamburger Icon*/
+.hamburger div{
+  width: 30px;
+  height:3px;
+  background: #f2f5f7;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.hamburger{
+  display: none;
+}
+
+.cart{
+  position: relative;
+}
+
+.counter{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fc8019;
+}
+
+/*Stying for small screens*/
+@media screen and (max-width: 800px){
+  .nav{
+      position: fixed;
+      z-index: 3;
+      height: 75px;
+  }
+
+  .hamburger{
+      display:block;
+      position: absolute;
+      cursor: pointer;
+      right: 5%;
+      top: 50%;
+      transform: translate(-5%, -50%);
+      z-index: 2;
+      transition: all 0.7s ease;
+  }
+  .navLinks{
+      margin: 0;
+      position: fixed;
+      background: #fc8019;
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      clip-path: circle(50px at 90% -20%);
+      -webkit-clip-path: circle(50px at 90% -10%);
+      transition: all 1s ease-out;
+      pointer-events: none;
+  }
+  .navLinks.open{
+      clip-path: circle(1000px at 90% -7%);
+      -webkit-clip-path: circle(1000px at 90% -7%);
+      pointer-events: all;
+  }
+
+  .navLinks li{
+      opacity: 0;
+  }
+  .navLinks li:nth-child(1){
+      transition: all 0.5s ease 0.2s;
+  }
+  .navLinks li:nth-child(2){
+      transition: all 0.5s ease 0.4s;
+  }
+  .navLinks li:nth-child(3){
+      transition: all 0.5s ease 0.6s;
+  }
+  .navLinks li:nth-child(4){
+      transition: all 0.5s ease 0.7s;
+  }
+  .navLinks li:nth-child(5){
+      transition: all 0.5s ease 0.8s;
+  }
+  .navLinks li:nth-child(6){
+      transition: all 0.5s ease 0.9s;
+      margin: 0;
+  }
+  .navLinks li:nth-child(7){
+      transition: all 0.5s ease 1s;
+      margin: 0;
+  }
+  .navLinks li:nth-child(8){
+    transition: all 0.5s ease 1s;
+    margin: 0;
+  }
+
+  li.fade{
+      opacity: 1;
+  }
+}
+/*Animating Hamburger Icon on Click*/
+.toggle .line1{
+  transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+  transition: all 0.7s ease;
+  width:0;
+}
+.toggle .line3{
+  transform: rotate(45deg) translate(-5px,-6px);
+}
